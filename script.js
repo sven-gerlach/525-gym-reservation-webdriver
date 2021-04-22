@@ -1,10 +1,13 @@
 const {Builder, By, until} = require("selenium-webdriver");
+const envy = require('envy')
+const credentials = envy()
 
 // Reset every day with desired dates and times
-let todayDate = "Saturday, January 23, 2021";
-let reservationDate = "Sunday, January 24, 2021";
-let reservationStartTime = "18:00";
-let reservationEndTime = "18:45";
+let todayDate = "Monday, March 22, 2021";
+let reservationDate = "Wednesday, March 24, 2021";
+let reservationStartTime = "17:00";
+let reservationEndTime = "17:45";
+
 
 (async function myFunction() {
     // instantiating WebDriver, opening a browser window, and navigating to the Buildingsite website
@@ -15,8 +18,8 @@ let reservationEndTime = "18:45";
     let userName = driver.findElement(By.id("Username"));
     let passWord = driver.findElement(By.id("Password"));
     let loginButton = driver.findElement(By.id("LoginButton"));
-    await userName.sendKeys("svengerlach@me.com");
-    await passWord.sendKeys("KQTdfs_Zk'M*4ja9EpRa");
+    await userName.sendKeys(credentials.email);
+    await passWord.sendKeys(credentials.password);
     loginButton.click();
 
     // function gets repeatedly executed until return value is truthy, that is until button is loaded
@@ -30,7 +33,7 @@ let reservationEndTime = "18:45";
     })
 
     // select gym floor 1 to navigate to reservation page
-    await driver.wait(until.elementLocated(By.id("ctl00_ContentPlaceHolder1_AmenitiesDataList_ctl16_SelectAmenityLink"))).then(element => {
+    await driver.wait(until.elementLocated(By.id("ctl00_ContentPlaceHolder1_AmenitiesDataList_ctl11_SelectAmenityLink"))).then(element => {
         element.click();
     })
 
