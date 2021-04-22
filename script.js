@@ -1,6 +1,6 @@
 const {Builder, By, until} = require("selenium-webdriver");
-const envy = require('envy')
-const credentials = envy()
+const envy = require('envy');
+const credentials = envy();
 
 // Reset every day with desired dates and times
 let todayDate = "Monday, March 22, 2021";
