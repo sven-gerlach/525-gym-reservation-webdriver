@@ -4,7 +4,8 @@
   "description": "Learning about Selenium",
   "main": "script.js",
   "dependencies": {
-    "selenium-webdriver": "^4.0.0-alpha.8"
+    "envy": "^2.0.0",
+    "selenium-webdriver": "^4.0.0-beta.2"
   },
   "devDependencies": {},
   "scripts": {
