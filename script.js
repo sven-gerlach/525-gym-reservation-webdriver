@@ -1,10 +1,13 @@
 const {Builder, By, until} = require("selenium-webdriver");
+const envy = require('envy')
+const credentials = envy()
 
 // Reset every day with desired dates and times
 let todayDate = "Monday, March 22, 2021";
 let reservationDate = "Wednesday, March 24, 2021";
 let reservationStartTime = "17:00";
 let reservationEndTime = "17:45";
+
 
 (async function myFunction() {
     // instantiating WebDriver, opening a browser window, and navigating to the Buildingsite website
@@ -15,8 +18,8 @@ let reservationEndTime = "17:45";
     let userName = driver.findElement(By.id("Username"));
     let passWord = driver.findElement(By.id("Password"));
     let loginButton = driver.findElement(By.id("LoginButton"));
-    await userName.sendKeys("svengerlach@me.com");
-    await passWord.sendKeys("KQTdfs_Zk'M*4ja9EpRa");
+    await userName.sendKeys(credentials.email);
+    await passWord.sendKeys(credentials.password);
     loginButton.click();
 
     // function gets repeatedly executed until return value is truthy, that is until button is loaded
